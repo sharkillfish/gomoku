@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>五子棋</title>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Title Screen -->
+    <div id="title-screen" class="screen active">
+      <div class="title-content">
+        <div class="logo-mark">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-label="五子棋">
+            <rect x="8" y="8" width="48" height="48" rx="4" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="20" x2="56" y2="20" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="8" y1="32" x2="56" y2="32" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="8" y1="44" x2="56" y2="44" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="20" y1="8" x2="20" y2="56" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="32" y1="8" x2="32" y2="56" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="44" y1="8" x2="44" y2="56" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <circle cx="26" cy="26" r="6" fill="currentColor"/>
+            <circle cx="38" cy="38" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h1 class="game-title">五子棋</h1>
+        <p class="game-subtitle">人机对战</p>
+        <div class="difficulty-select">
+          <p class="label">选择难度</p>
+          <div class="btn-group">
+            <button class="btn" data-difficulty="easy">简单</button>
+            <button class="btn btn-active" data-difficulty="medium">中等</button>
+            <button class="btn" data-difficulty="hard">困难</button>
+          </div>
+        </div>
+        <button id="start-btn" class="btn btn-primary">开始对局</button>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <div class="player-info player-black">
+          <span class="stone-icon black"></span>
+          <span class="player-name">你</span>
+        </div>
+        <div class="turn-indicator" id="turn-text">你的回合</div>
+        <div class="player-info player-white">
+          <span class="player-name">AI</span>
+          <span class="stone-icon white"></span>
+        </div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="board-canvas"></canvas>
+      </div>
+      <div class="game-controls">
+        <button id="undo-btn" class="btn btn-sm">悔棋</button>
+        <button id="restart-btn" class="btn btn-sm">重新开始</button>
+        <button id="menu-btn" class="btn btn-sm">返回菜单</button>
+      </div>
+      <button id="sound-toggle" class="sound-btn" aria-label="切换音效">
+        <svg id="sound-on-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <svg id="sound-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+    </div>
+
+    <!-- Result Overlay -->
+    <div id="result-overlay" class="overlay">
+      <div class="overlay-content">
+        <h2 id="result-title" class="result-title"></h2>
+        <p id="result-desc" class="result-desc"></p>
+        <div class="overlay-buttons">
+          <button id="play-again-btn" class="btn btn-primary">再来一局</button>
+          <button id="back-menu-btn" class="btn">返回菜单</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+  </footer>
+
+  <script src="./game.js"></script>
+</body>
+</html>
